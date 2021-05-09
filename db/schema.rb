@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_133550) do
+ActiveRecord::Schema.define(version: 2021_05_08_115533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accomodations", force: :cascade do |t|
-    t.string "available_beds"
-    t.string "price"
+    t.integer "available_beds"
+    t.integer "price"
     t.text "description"
     t.boolean "has_wifi"
     t.text "welcome_message"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_133550) do
   end
 
   add_foreign_key "accomodations", "cities"
+  add_foreign_key "accomodations", "users", column: "adm_id"
   add_foreign_key "reservations", "accomodations"
   add_foreign_key "reservations", "users"
 end
